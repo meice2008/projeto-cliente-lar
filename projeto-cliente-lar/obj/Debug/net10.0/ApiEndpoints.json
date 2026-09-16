@@ -1,0 +1,160 @@
+[
+  {
+    "ContainingType": "projeto_cliente_lar.Controllers.PessoaController",
+    "Method": "GetAll",
+    "RelativePath": "api/Pessoa",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "projeto_cliente_lar.Controllers.PessoaController",
+    "Method": "Create",
+    "RelativePath": "api/Pessoa",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pessoa",
+        "Type": "projeto_cliente_lar.DTO.PessoaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "projeto_cliente_lar.Controllers.PessoaController",
+    "Method": "GetByCpf",
+    "RelativePath": "api/Pessoa/{cpf}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cpf",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "projeto_cliente_lar.Controllers.PessoaController",
+    "Method": "Update",
+    "RelativePath": "api/Pessoa/{cpf}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cpf",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "pessoa",
+        "Type": "projeto_cliente_lar.DTO.PessoaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "projeto_cliente_lar.Controllers.PessoaController",
+    "Method": "Delete",
+    "RelativePath": "api/Pessoa/{cpf}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cpf",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "projeto_cliente_lar.Controllers.TelefoneController",
+    "Method": "GetAll",
+    "RelativePath": "api/Telefone",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "projeto_cliente_lar.Controllers.TelefoneController",
+    "Method": "Create",
+    "RelativePath": "api/Telefone",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "telefone",
+        "Type": "projeto_cliente_lar.DTO.TelefoneRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "projeto_cliente_lar.Controllers.TelefoneController",
+    "Method": "GetByNumero",
+    "RelativePath": "api/Telefone/{numero}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numero",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "projeto_cliente_lar.Controllers.TelefoneController",
+    "Method": "Update",
+    "RelativePath": "api/Telefone/{numero}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numero",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "telefone",
+        "Type": "projeto_cliente_lar.DTO.TelefoneRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "projeto_cliente_lar.Controllers.TelefoneController",
+    "Method": "Delete",
+    "RelativePath": "api/Telefone/{numero}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numero",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
