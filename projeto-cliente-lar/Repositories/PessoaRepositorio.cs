@@ -3,7 +3,7 @@ using projeto_cliente_lar.Interfaces;
 
 namespace projeto_cliente_lar.Repositories
 {
-    public class PessoaRepositorio : IPessoaRepositorio
+    public class PessoaRepositorio //: IPessoaRepositorio
     {
         private readonly List<Pessoa> _pessoas = new List<Pessoa>();
 

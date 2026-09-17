@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 using projeto_cliente_lar.DTO;
 using projeto_cliente_lar.Entities;
 using projeto_cliente_lar.Interfaces;
@@ -9,11 +10,13 @@ namespace projeto_cliente_lar.Services
     {
         private readonly ITelefoneRepositorio _repositorio;
         private readonly IMapper _mapper;
+        private readonly ILogger<TelefoneService> _logger;
 
-        public TelefoneService(ITelefoneRepositorio repositorio, IMapper mapper)
+        public TelefoneService(ITelefoneRepositorio repositorio, IMapper mapper, ILogger<TelefoneService> logger)
         {
             _repositorio = repositorio;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task AddAsync(TelefoneRequest telefoneRequest)
@@ -21,11 +24,13 @@ namespace projeto_cliente_lar.Services
             try
             {
                 var telefone = _mapper.Map<Telefone>(telefoneRequest);
+                _logger.LogInformation("Adicionando telefone {Numero} Tipo {Tipo}", telefone.Numero, telefone.Tipo);
                 await _repositorio.AddAsync(telefone);
+                _logger.LogInformation("Telefone adicionado: {Numero}", telefone.Numero);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // tratamento simples inicial
+                _logger.LogError(ex, "Erro ao adicionar telefone {Numero}", telefoneRequest.Numero);
             }
         }
 
@@ -33,10 +38,17 @@ namespace projeto_cliente_lar.Services
         {
             try
             {
-                return await _repositorio.DeleteAsync(numero);
+                _logger.LogInformation("Removendo telefone {Numero}", numero);
+                var result = await _repositorio.DeleteAsync(numero);
+                if (result)
+                    _logger.LogInformation("Telefone removido: {Numero}", numero);
+                else
+                    _logger.LogWarning("Telefone nao encontrado para remoção: {Numero}", numero);
+                return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex, "Erro ao remover telefone {Numero}", numero);
                 return false;
             }
         }
@@ -45,10 +57,12 @@ namespace projeto_cliente_lar.Services
         {
             try
             {
+                _logger.LogDebug("Obtendo todos os telefones");
                 return await _repositorio.GetAllAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex, "Erro ao obter telefones");
                 return Array.Empty<Telefone>();
             }
         }
@@ -57,10 +71,12 @@ namespace projeto_cliente_lar.Services
         {
             try
             {
+                _logger.LogDebug("Obtendo telefone por numero {Numero}", numero);
                 return await _repositorio.GetByNumeroAsync(numero);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex, "Erro ao obter telefone por numero {Numero}", numero);
                 return null;
             }
         }
@@ -70,10 +86,17 @@ namespace projeto_cliente_lar.Services
             try
             {
                 var telefone = _mapper.Map<Telefone>(telefoneRequest);
-                return await _repositorio.UpdateAsync(telefone);
+                _logger.LogInformation("Atualizando telefone {Numero}", telefone.Numero);
+                var result = await _repositorio.UpdateAsync(telefone);
+                if (result)
+                    _logger.LogInformation("Telefone atualizado: {Numero}", telefone.Numero);
+                else
+                    _logger.LogWarning("Telefone nao encontrado para atualização: {Numero}", telefone.Numero);
+                return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex, "Erro ao atualizar telefone {Numero}", telefoneRequest.Numero);
                 return false;
             }
         }

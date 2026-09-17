@@ -9,7 +9,7 @@ namespace projeto_cliente_lar.DTO
     public enum TipoTelefone
     {
         Residencial,
-        Celular,
-        Comercial
+        Comercial,
+        Celular
     }
 }

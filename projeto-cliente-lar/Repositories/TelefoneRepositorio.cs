@@ -3,7 +3,7 @@ using projeto_cliente_lar.Interfaces;
 
 namespace projeto_cliente_lar.Repositories
 {
-    public class TelefoneRepositorio : ITelefoneRepositorio
+    public class TelefoneRepositorio //: ITelefoneRepositorio
     {
         private readonly List<Telefone> _telefones = new();
 
